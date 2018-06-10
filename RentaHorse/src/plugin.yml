@@ -1,0 +1,10 @@
+name: RentaHorse
+version: 1.0
+description: Horse Rental Plugin with Built in Economy
+author: DevMinty
+main: me.admin.rentahorse.Core
+
+commands:
+    rentaleconomy:
+      usage: /<command>
+      description: A command
