@@ -1,29 +1,35 @@
 package me.admin.rentahorse;
 
-import me.admin.rentahorse.apis.SLAPI;
-import me.admin.rentahorse.commands.EconCommand;
-import me.admin.rentahorse.listeners.PlayerJoinListener;
-import me.admin.rentahorse.managers.EconManager;
+import me.admin.rentahorse.listeners.SignCreate;
 import org.bukkit.Bukkit;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * RentaHorse started
  */
-public class Core extends JavaPlugin {
+public class Core extends JavaPlugin implements Listener {
 
-    @Override
-    public void onEnable() {
-        getCommand("rentaleconomy").setExecutor(new EconCommand());
-        new EconManager(this);
+    private static Core core;
 
-        SLAPI.loadBalances();
+    public void onEnable(){
 
-        Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), this);
+        registerEvents(this, new SignCreate());
     }
 
-    @Override
-    public void onDisable() {
-        SLAPI.saveBalances();
+    public void onDisable(){
+
     }
+
+    public static Core getPlugin(){
+        return core;
+    }
+
+    public static void registerEvents(org.bukkit.plugin.Plugin plugin, Listener... listeners) {
+        for (Listener listener : listeners) {
+            Bukkit.getServer().getPluginManager().registerEvents(listener, plugin);
+        }
+    }
+
+
 }

@@ -1,10 +1,10 @@
-name: RentaHorse
-version: 1.0
-description: Horse Rental Plugin with Built in Economy
-author: DevMinty
+name: HorseBuyer
 main: me.admin.rentahorse.Core
+version: 1.0
+author: DevMinty
+description: A Plugin!
 
-commands:
-    rentaleconomy:
-      usage: /<command>
-      description: A command
+permissions:
+    horse.signcreate:
+      default: op
+      description: Permission
