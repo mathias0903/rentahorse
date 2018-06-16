@@ -2,9 +2,21 @@ name: HorseBuyer
 main: me.admin.rentahorse.Core
 version: 1.0
 author: DevMinty
+depend: [Vault]
 description: A Plugin!
+
+commands:
+    setstable:
+      usage: /<command>
+      description: A command!
 
 permissions:
     horse.signcreate:
       default: op
-      description: Permission
+      description: Permission to create signs
+    horse.signremove:
+      default: op
+      description: Permission to remove signs
+    horse.notify:
+      default: op
+      description: Permission to remove signs
