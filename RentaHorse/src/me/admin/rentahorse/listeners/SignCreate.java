@@ -16,13 +16,13 @@ public class SignCreate implements Listener{
         if(event.getPlayer().hasPermission("horse.signcreate")) {
             if (event.getLine(0).equalsIgnoreCase("[HORSE]")) {
                 event.setLine(0, ChatColor.DARK_PURPLE + "[HORSE]");
-                event.getPlayer().sendMessage(ChatHandler.signCreated(event.getPlayer()));
+                event.getPlayer().sendMessage(ChatHandler.signCreated());
             }
             if(event.getLine(1).isEmpty()){
                 event.getPlayer().sendMessage("1");
             }
         }else{
-            event.getPlayer().sendMessage(ChatHandler.noPerm(event.getPlayer()));
+            event.getPlayer().sendMessage(ChatHandler.noPerm());
         }
 
     }

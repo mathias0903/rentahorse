@@ -1,5 +1,6 @@
 package me.admin.rentahorse;
 
+import me.admin.rentahorse.listeners.SignClick;
 import me.admin.rentahorse.listeners.SignCreate;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -14,7 +15,7 @@ public class Core extends JavaPlugin implements Listener {
 
     public void onEnable(){
 
-        registerEvents(this, new SignCreate());
+        registerEvents(this, new SignCreate(), new SignClick());
     }
 
     public void onDisable(){
