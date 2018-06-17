@@ -33,24 +33,34 @@ public class SignClick implements Listener {
         if (e.getClickedBlock().getState() instanceof Sign) {
 
             Sign s = (Sign) e.getClickedBlock().getState();
+            Player player = e.getPlayer();
 
             if (s.getLine(0).equalsIgnoreCase(ChatColor.DARK_PURPLE + "[HORSE]")) {
-                if (s.getLine(1).equalsIgnoreCase(ChatColor.GOLD + "Level " + ChatColor.GRAY + ": " + ChatColor.GREEN + "1")) {
-                    HorseHandler.addLevelOneHorse(e.getPlayer());
-
+                 try {
+                	int price = Integer.parseInt(ChatColor.stripColor(s.getLine(3).substring(7)));
+                }catch(NumberFormatException e1) {
+                	int price = 0;
                 }
-                if (s.getLine(1).equalsIgnoreCase(ChatColor.GOLD + "Level " + ChatColor.GRAY + ": " + ChatColor.GREEN + "2")) {
+                if(economy.has(player, price)) {
+                    economy.withdrawPlayer(player, price);
+                      if (s.getLine(1).equalsIgnoreCase(ChatColor.GOLD + "Level " + ChatColor.GRAY + ": " + ChatColor.GREEN + "1")) {
+                         HorseHandler.addLevelOneHorse(e.getPlayer());
 
-                    HorseHandler.addLevelTwoHorse(e.getPlayer());
+                      }
+                      if (s.getLine(1).equalsIgnoreCase(ChatColor.GOLD + "Level " + ChatColor.GRAY + ": " + ChatColor.GREEN + "2")) {
 
-                }
-                if (s.getLine(1).equalsIgnoreCase(ChatColor.GOLD + "Level " + ChatColor.GRAY + ": " + ChatColor.GREEN + "3")) {
-                    HorseHandler.addLevelThreeHorse(e.getPlayer());
+                          HorseHandler.addLevelTwoHorse(e.getPlayer());
 
-                }
-                if (s.getLine(1).equalsIgnoreCase(ChatColor.GOLD + "Level " + ChatColor.GRAY + ": " + ChatColor.GREEN + "4")) {
+                      }
+                    if (s.getLine(1).equalsIgnoreCase(ChatColor.GOLD + "Level " + ChatColor.GRAY + ": " + ChatColor.GREEN + "3")) {
+                          HorseHandler.addLevelThreeHorse(e.getPlayer());
 
-                    HorseHandler.addLevelFourHorse(e.getPlayer());
+                       }
+                     if (s.getLine(1).equalsIgnoreCase(ChatColor.GOLD + "Level " + ChatColor.GRAY + ": " + ChatColor.GREEN + "4")) {
+
+                         HorseHandler.addLevelFourHorse(e.getPlayer());
+                        }
+                    
                 }
             }
         }
